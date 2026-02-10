@@ -243,5 +243,3 @@ POST /auth/login
 **Sarthak Sharma**
 B.Tech Computer Science & Engineering
 Backend & AI Developer
-* Help you push this with a **clean commit history**
-* Convert this into a **resume-ready project entry** that attracts recruiters.
