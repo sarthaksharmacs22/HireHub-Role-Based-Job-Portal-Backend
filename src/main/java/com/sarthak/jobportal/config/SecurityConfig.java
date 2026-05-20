@@ -18,20 +18,22 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+
         http
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
+
                         .requestMatchers("/api/auth/**").permitAll()
 
-                        .requestMatchers("/api/jobs").hasRole("RECRUITER")
-                        .requestMatchers("/api/applications/apply").hasRole("CANDIDATE")
-                        .requestMatchers("/api/applications/job/**").hasRole("RECRUITER")
+                        .requestMatchers("/admin/**").hasRole("ADMIN")
+                        .requestMatchers("/recruiter/**").hasRole("RECRUITER")
+                        .requestMatchers("/candidate/**").hasRole("CANDIDATE")
 
                         .anyRequest().authenticated()
                 )
                 .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
 
-        return http.build();
+       return http.build();
     }
 
 
